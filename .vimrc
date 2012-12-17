@@ -1,6 +1,7 @@
 "Temporary build map
 nnoremap <F5> :!./deploy -d<CR><CR>
 
+"Turn on filetype settings
 filetype on
 filetype plugin on
 syntax on
@@ -8,25 +9,44 @@ syntax on
 "Show partial commands
 set showcmd
 
+"Show the cursor position
+set ruler
+
+"Do incremental searches
+set incsearch
+
+" Display most of a long line at the end of a screen
+set display+=lastline
+
 "Indent settings
 set tabstop=4
 set shiftwidth=4
 set expandtab
 set autoindent
+
+"Set casing options
 set ignorecase
 set smartcase
 
 "Relative numbering
 set relativenumber
 function! NumberToggle()
-	if(&relativenumber == 1)
-		set number
-	else
-		set relativenumber
-	endif
+    if(&relativenumber == 1)
+        set number
+    else
+        set relativenumber
+    endif
 endfunc
 
 nnoremap <C-n> :call NumberToggle()<CR>
+
+" Convenient command to see the difference between the current buffer and the
+" file it was loaded from, thus the changes you made.
+" Only define it when not defined already.
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+          \ | wincmd p | diffthis
+endif
 
 "Colors
 colorscheme default
@@ -55,10 +75,21 @@ let NERDTreeIgnore = ['\.pyc$']
 :nnoremap <C-b> :buffers<CR>:buffer<Space>
 
 "Easier navigation
-nnoremap <C-Down> <C-e>
-nnoremap <C-Up> <C-y>
-map <C-left> :tabp<CR>
-map <C-right> :tabn<CR>
+"Test if we're on OS X or not because it reads arrow keys differently
+if has("unix")
+    let s:uname = system("uname")
+    if s:uname == "Darwin\n"
+        nnoremap ^[[5B <C-e>
+        nnoremap ^[[5A <C-y>
+        nnoremap [5D :tabprevious<CR>
+        nnoremap [5C :tabnext<CR>
+    else
+        nnoremap <C-Down> <C-e>
+        nnoremap <C-Up> <C-y>
+        map <C-left> :tabp<CR>
+        map <C-right> :tabn<CR>
+    endif
+endif
 map <C-T> :tabnew %<CR>
 
 "Fix weird inconsistency with Y
