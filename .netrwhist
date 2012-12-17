@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/kris'
+let g:netrw_dirhist_2='/etc/mdadm'
+let g:netrw_dirhist_3='/etc/cron.daily'
+let g:netrw_dirhist_4='/home/kris/Desktop'
+let g:netrw_dirhist_5='/home/kris/.vim'
+let g:netrw_dirhist_6='/Users/Kris/.vim/after/ftplugin'
