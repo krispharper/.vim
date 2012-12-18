@@ -15,8 +15,14 @@ set ruler
 "Do incremental searches
 set incsearch
 
-" Display most of a long line at the end of a screen
+"Display most of a long line at the end of a screen
 set display+=lastline
+
+"Always show the status line
+set laststatus=2
+
+"Turn off beeping
+set noeb vb t_vb=
 
 "Indent settings
 set tabstop=4
@@ -27,6 +33,9 @@ set autoindent
 "Set casing options
 set ignorecase
 set smartcase
+
+"Allow use of backspace key for deletion
+set backspace=indent,eol,start
 
 "Relative numbering
 set relativenumber
@@ -55,6 +64,20 @@ highlight SpellBad term=Reverse ctermbg=Red ctermfg=White
 "Allow XML and HTML tag matching
 runtime macros/matchit.vim
 
+"Set gvim start size and font
+if has("gui_running")
+    au GUIEnter * simalt ~x
+    set guifont=consolas:h9:cANSI
+endif
+
+"Set the shell to use powershell instead of cmd
+if has("win32")
+    set shell=powershell.exe
+    set shellcmdflag=-command
+
+    let Tlist_Ctags_Cmd = 'C:\Windows\System32\ctags.exe'
+endif
+
 "Fold settings
 set foldmethod=indent
 set foldnestmax=2
@@ -68,7 +91,7 @@ map T :TlistToggle<CR>
 
 "NERDTree settings
 let g:NERDTreeWinPos = "right"
-map nt :NERDTree<CR>
+nnoremap <C-\> :NERDTree<CR>
 let NERDTreeIgnore = ['\.pyc$']
 
 "Buffer switching
