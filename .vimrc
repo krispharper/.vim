@@ -1,6 +1,3 @@
-"Temporary build map
-nnoremap <F5> :!./deploy -d<CR><CR>
-
 "Turn on filetype settings
 filetype on
 filetype plugin on
@@ -70,11 +67,13 @@ if has("gui_running")
     set guifont=consolas:h9:cANSI
 endif
 
-"Set the shell to use powershell instead of cmd
+"Windows specific settings
 if has("win32")
+    "Set the shell to use powershell instead of cmd
     set shell=powershell.exe
     set shellcmdflag=-command
 
+    "Explicitly set path to ctags
     let Tlist_Ctags_Cmd = 'C:\Windows\System32\ctags.exe'
 endif
 
