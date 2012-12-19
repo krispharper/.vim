@@ -27,8 +27,6 @@ let loaded_nerd_tree = 1
 let s:old_cpo = &cpo
 set cpo&vim
 
-let s:running_windows = has("win16") || has("win32") || has("win64")
-
 "Function: s:initVariable() function {{{2
 "This function is used to initialise a given variable to a given value. The
 "variable is only initialised if it does not exist prior
@@ -68,7 +66,7 @@ call s:initVariable("g:NERDTreeShowFiles", 1)
 call s:initVariable("g:NERDTreeShowHidden", 0)
 call s:initVariable("g:NERDTreeShowLineNumbers", 0)
 call s:initVariable("g:NERDTreeSortDirs", 1)
-call s:initVariable("g:NERDTreeDirArrows", !s:running_windows)
+call s:initVariable("g:NERDTreeDirArrows", 0)
 
 if !exists("g:NERDTreeSortOrder")
     let g:NERDTreeSortOrder = ['\/$', '*', '\.swp$',  '\.bak$', '\~$']
@@ -93,6 +91,8 @@ if !exists('g:NERDTreeStatusline')
 endif
 call s:initVariable("g:NERDTreeWinPos", "left")
 call s:initVariable("g:NERDTreeWinSize", 31)
+
+let s:running_windows = has("win16") || has("win32") || has("win64")
 
 "init the shell commands that will be used to copy nodes, and remove dir trees
 "
@@ -169,10 +169,6 @@ command! -n=0 -bar NERDTreeFind call s:findAndRevealPath()
 augroup NERDTree
     "Save the cursor position whenever we close the nerd tree
     exec "autocmd BufWinLeave ". s:NERDTreeBufName ."* call <SID>saveScreenState()"
-
-    "disallow insert mode in the NERDTree
-    exec "autocmd BufEnter ". s:NERDTreeBufName ."* stopinsert"
-
     "cache bookmarks when vim loads
     autocmd VimEnter * call s:Bookmark.CacheBookmarks(0)
 
@@ -565,7 +561,7 @@ function! s:MenuController._echoPrompt()
 endfunction
 
 "FUNCTION: MenuController._current(key) {{{3
-"get the MenuItem that is currently selected
+"get the MenuItem that is curently selected
 function! s:MenuController._current()
     return self.menuItems[self.selection]
 endfunction
@@ -870,10 +866,8 @@ function! s:TreeFileNode.copy(dest)
     let parent = b:NERDTreeRoot.findNode(newPath.getParent())
     if !empty(parent)
         call parent.refresh()
-        return parent.findNode(newPath)
-    else
-        return {}
     endif
+    return parent.findNode(newPath)
 endfunction
 
 "FUNCTION: TreeFileNode.delete {{{3
@@ -1886,7 +1880,7 @@ let s:Path = {}
 function! s:Path.AbsolutePathFor(str)
     let prependCWD = 0
     if s:running_windows
-        let prependCWD = a:str !~# '^.:\(\\\|\/\)'
+        let prependCWD = a:str !~# '^.:\(\\\|\/\)' && a:str !~# '^\(\\\\\|\/\/\)'
     else
         let prependCWD = a:str !~# '^/'
     endif
@@ -2115,7 +2109,13 @@ endfunction
 "If running windows, cache the drive letter for this path
 function! s:Path.extractDriveLetter(fullpath)
     if s:running_windows
-        let self.drive = substitute(a:fullpath, '\(^[a-zA-Z]:\).*', '\1', '')
+        if a:fullpath =~ '^\(\\\\\|\/\/\)'
+            "For network shares, the 'drive' consists of the first two parts of the path, i.e. \\boxname\share
+            let self.drive = substitute(a:fullpath, '^\(\(\\\\\|\/\/\)[^\\\/]*\(\\\|\/\)[^\\\/]*\).*', '\1', '')
+            let self.drive = substitute(self.drive, '/', '\', "g")
+        else
+            let self.drive = substitute(a:fullpath, '\(^[a-zA-Z]:\).*', '\1', '')
+        endif
     else
         let self.drive = ''
     endif
@@ -2298,7 +2298,7 @@ function! s:Path.readInfoFromDisk(fullpath)
     let lastPathComponent = self.getLastPathComponent(0)
 
     "get the path to the new node with the parent dir fully resolved
-    let hardPath = resolve(self.strTrunk()) . '/' . lastPathComponent
+    let hardPath = resolve(self.strTrunk()) . lastPathComponent
 
     "if  the last part of the path is a symlink then flag it as such
     let self.isSymLink = (resolve(hardPath) != hardPath)
@@ -2473,9 +2473,13 @@ function! s:Path._str()
 endfunction
 
 "FUNCTION: Path.strTrunk() {{{3
-"Gets the path without the last segment on the end.
+"Gets the path without the last segment on the end, always with an endslash
 function! s:Path.strTrunk()
-    return self.drive . '/' . join(self.pathSegments[0:-2], '/')
+    let toReturn = self.drive . '/' . join(self.pathSegments[0:-2], '/')
+    if toReturn !~# '\/$'
+        let toReturn .= '/'
+    endif
+    return toReturn
 endfunction
 
 "FUNCTION: Path.WinToUnixPath(pathstr){{{3
@@ -2494,6 +2498,9 @@ function! s:Path.WinToUnixPath(pathstr)
 
     "remove the x:\ of the front
     let toReturn = substitute(toReturn, '^.*:\(\\\|/\)\?', '/', "")
+
+    "remove the \\ network share from the front
+    let toReturn = substitute(toReturn, '^\(\\\\\|\/\/\)[^\\\/]*\(\\\|\/\)[^\\\/]*\(\\\|\/\)\?', '/', "")
 
     "convert all \ chars to /
     let toReturn = substitute(toReturn, '\', '/', "g")
