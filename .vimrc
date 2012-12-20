@@ -26,6 +26,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set autoindent
+set softtabstop=4
 
 "Set casing options
 set ignorecase
@@ -119,3 +120,7 @@ map Y y$
 
 "Make K the opposite of J
 nmap K i<CR><esc>k$
+
+"Shift blocks without leaving visual mode
+vnoremap < <gv
+vnoremap > >gv
