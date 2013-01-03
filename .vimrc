@@ -83,8 +83,8 @@ set foldmethod=indent
 set foldnestmax=2
 set foldlevel=1000
 nnoremap <space> za
-nnoremap zc zM
-nnoremap zo zR
+nnoremap zC zM
+nnoremap zO zR
 
 "Taglist settings
 map T :TlistToggle<CR>
