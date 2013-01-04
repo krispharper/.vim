@@ -66,6 +66,7 @@ runtime macros/matchit.vim
 if has("gui_running")
     au GUIEnter * simalt ~x
     set guifont=consolas:h9:cANSI
+    set clipboard=unnamed
 endif
 
 "Windows specific settings
