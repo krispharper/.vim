@@ -67,6 +67,7 @@ if has("gui_running")
     au GUIEnter * simalt ~x
     set guifont=consolas:h9:cANSI
     set clipboard=unnamed
+    colorscheme zenburn
 endif
 
 "Windows specific settings
