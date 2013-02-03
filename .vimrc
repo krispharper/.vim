@@ -108,12 +108,12 @@ if has("unix")
         nnoremap ^[[5A <C-y>
         nnoremap [5D :tabprevious<CR>
         nnoremap [5C :tabnext<CR>
-    else
-        nnoremap <C-Down> <C-e>
-        nnoremap <C-Up> <C-y>
-        map <C-left> :tabp<CR>
-        map <C-right> :tabn<CR>
     endif
+else
+    nnoremap <C-Down> <C-e>
+    nnoremap <C-Up> <C-y>
+    map <C-left> :tabp<CR>
+    map <C-right> :tabn<CR>
 endif
 map <C-T> :tabnew %<CR>
 
