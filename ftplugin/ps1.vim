@@ -24,3 +24,6 @@ endif
 " Undo the stuff we changed
 let b:undo_ftplugin = "setlocal tw< cms< fo<" .
 	\ " | unlet! b:browsefilter"
+
+" Set fold method to syntax
+setlocal foldmethod=syntax

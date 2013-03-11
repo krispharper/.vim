@@ -64,7 +64,7 @@ runtime macros/matchit.vim
 
 "Set gvim start size and font
 if has("gui_running")
-    au GUIEnter * simalt ~x
+    "au GUIEnter * simalt ~x
     set guifont=consolas:h9:cANSI
     set clipboard=unnamed
     colorscheme zenburn
@@ -87,6 +87,10 @@ set foldlevel=1000
 nnoremap <space> za
 nnoremap zC zM
 nnoremap zO zR
+
+"Save fold settings on exit and reload on start
+au BufWinLeave * silent! mkview
+au BufWinEnter * silent! loadview
 
 "Taglist settings
 map T :TlistToggle<CR>
