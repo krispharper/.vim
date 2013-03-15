@@ -21,6 +21,9 @@ set laststatus=2
 "Turn off beeping
 set noeb vb t_vb=
 
+"Allow edited hidden buffers
+set hidden
+
 "Indent settings
 set tabstop=4
 set shiftwidth=4
