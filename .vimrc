@@ -110,17 +110,18 @@ let NERDTreeIgnore = ['\.pyc$']
 "Test if we're on OS X or not because it reads arrow keys differently
 if has("unix")
     let s:uname = system("uname")
+
     if s:uname == "Darwin\n"
         nnoremap ^[[5B <C-e>
         nnoremap ^[[5A <C-y>
         nnoremap [5D :tabprevious<CR>
         nnoremap [5C :tabnext<CR>
     endif
-else
+
     nnoremap <C-Down> <C-e>
     nnoremap <C-Up> <C-y>
-    map <C-left> :tabp<CR>
-    map <C-right> :tabn<CR>
+    map <C-Left> :tabp<CR>
+    map <C-Right> :tabn<CR>
 endif
 map <C-T> :tabnew %<CR>
 
