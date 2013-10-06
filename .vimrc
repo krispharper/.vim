@@ -67,8 +67,11 @@ runtime macros/matchit.vim
 
 "Set gvim start size and font
 if has("gui_running")
-    "au GUIEnter * simalt ~x
-    set guifont=Source_Code_Pro:h9:cANSI
+    if has("win32")
+        set guifont=Source_Code_Pro:h9:cANSI
+    else
+        set guifont=Source\ Code\ Pro\ Medium\ 9
+    endif
     set clipboard=unnamed
     colorscheme zenburn
 endif
