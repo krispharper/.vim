@@ -38,6 +38,9 @@ set smartcase
 "Allow use of backspace key for deletion
 set backspace=indent,eol,start
 
+"Change leader
+let mapleader = ","
+
 "Relative numbering
 set relativenumber
 function! NumberToggle()
@@ -49,14 +52,6 @@ function! NumberToggle()
 endfunc
 
 nnoremap <C-n> :call NumberToggle()<CR>
-
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-" Only define it when not defined already.
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-          \ | wincmd p | diffthis
-endif
 
 "Colors
 colorscheme default
@@ -95,9 +90,6 @@ nnoremap zO zR
 au BufWinLeave * silent! mkview
 au BufWinEnter * silent! loadview
 
-"Taglist settings
-map T :TlistToggle<CR>
-
 "NERDTree settings
 let g:NERDTreeWinPos = "right"
 nnoremap <C-\> :NERDTree<CR>
@@ -105,6 +97,9 @@ let NERDTreeIgnore = ['\.pyc$']
 
 "Buffer switching
 :nnoremap <C-b> :buffers<CR>:buffer<Space>
+
+"Open all buffers in tabs
+map <leader>bt :tab sball<CR>
 
 "Easier navigation
 "Test if we're on OS X or not because it reads arrow keys differently
@@ -117,12 +112,15 @@ if has("unix")
         nnoremap [5D :tabprevious<CR>
         nnoremap [5C :tabnext<CR>
     endif
-
-    nnoremap <C-Down> <C-e>
-    nnoremap <C-Up> <C-y>
-    map <C-Left> :tabp<CR>
-    map <C-Right> :tabn<CR>
 endif
+
+nnoremap <C-Down> <C-e>
+nnoremap <C-Up> <C-y>
+map <C-Left> :tabp<CR>
+map <C-Right> :tabn<CR>
+map <C-H> :tabp<CR>
+map <C-L> :tabn<CR>
+
 map <C-T> :tabnew %<CR>
 
 "Fix weird inconsistency with Y
