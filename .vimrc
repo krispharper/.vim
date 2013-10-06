@@ -78,9 +78,6 @@ if has("win32")
     "Set the shell to use powershell instead of cmd
     set shell=powershell.exe
     set shellcmdflag=-command
-
-    "Explicitly set path to ctags
-    let Tlist_Ctags_Cmd = 'C:\Windows\System32\ctags.exe'
 endif
 
 "Fold settings
