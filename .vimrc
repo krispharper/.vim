@@ -69,7 +69,14 @@ runtime macros/matchit.vim
 if has("gui_running")
     "au GUIEnter * simalt ~x
     set guifont=Source_Code_Pro:h9:cANSI
+
+    "Use system keyboard
     set clipboard=unnamed
+
+    "Remove menu bar and toolbar
+    set guioptions-=m
+    set guioptions-=T
+
     colorscheme zenburn
 endif
 
@@ -81,6 +88,10 @@ if has("win32")
 
     "Explicitly set path to ctags
     let Tlist_Ctags_Cmd = 'C:\Windows\System32\ctags.exe'
+
+    if exists("&novsvim_useeditorindent")
+        set novsvim_useeditorindent
+    endif
 endif
 
 "Fold settings
