@@ -38,6 +38,9 @@ set smartcase
 "Allow use of backspace key for deletion
 set backspace=indent,eol,start
 
+"Change leader
+let mapleader = ","
+
 "Relative numbering
 set relativenumber
 function! NumberToggle()
@@ -50,14 +53,6 @@ endfunc
 
 nnoremap <C-n> :call NumberToggle()<CR>
 
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-" Only define it when not defined already.
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-          \ | wincmd p | diffthis
-endif
-
 "Colors
 colorscheme default
 highlight SpellBad term=Reverse ctermbg=Red ctermfg=White
@@ -68,9 +63,13 @@ runtime macros/matchit.vim
 "Set gvim start size and font
 if has("gui_running")
     "au GUIEnter * simalt ~x
-    set guifont=Source_Code_Pro:h9:cANSI
 
-    "Use system keyboard
+    if has("win32")
+        set guifont=Source_Code_Pro:h9:cANSI
+    else
+        set guifont=Source\ Code\ Pro\ Medium\ 9
+    endif
+
     set clipboard=unnamed
 
     "Remove menu bar and toolbar
@@ -85,9 +84,6 @@ if has("win32")
     "Set the shell to use powershell instead of cmd
     set shell=powershell.exe
     set shellcmdflag=-command
-
-    "Explicitly set path to ctags
-    let Tlist_Ctags_Cmd = 'C:\Windows\System32\ctags.exe'
 
     if exists("&novsvim_useeditorindent")
         set novsvim_useeditorindent
@@ -106,9 +102,6 @@ nnoremap zO zR
 au BufWinLeave * silent! mkview
 au BufWinEnter * silent! loadview
 
-"Taglist settings
-map T :TlistToggle<CR>
-
 "NERDTree settings
 let g:NERDTreeWinPos = "right"
 nnoremap <C-\> :NERDTree<CR>
@@ -117,22 +110,29 @@ let NERDTreeIgnore = ['\.pyc$']
 "Buffer switching
 :nnoremap <C-b> :buffers<CR>:buffer<Space>
 
+"Open all buffers in tabs
+map <leader>bt :tab sball<CR>
+
 "Easier navigation
 "Test if we're on OS X or not because it reads arrow keys differently
 if has("unix")
     let s:uname = system("uname")
+
     if s:uname == "Darwin\n"
         nnoremap ^[[5B <C-e>
         nnoremap ^[[5A <C-y>
         nnoremap [5D :tabprevious<CR>
         nnoremap [5C :tabnext<CR>
     endif
-else
-    nnoremap <C-Down> <C-e>
-    nnoremap <C-Up> <C-y>
-    map <C-left> :tabp<CR>
-    map <C-right> :tabn<CR>
 endif
+
+nnoremap <C-Down> <C-e>
+nnoremap <C-Up> <C-y>
+map <C-Left> :tabp<CR>
+map <C-Right> :tabn<CR>
+map <C-H> :tabp<CR>
+map <C-L> :tabn<CR>
+
 map <C-T> :tabnew %<CR>
 
 "Fix weird inconsistency with Y
