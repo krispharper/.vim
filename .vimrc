@@ -42,10 +42,12 @@ set backspace=indent,eol,start
 let mapleader = ","
 
 "Relative numbering
+set number
 set relativenumber
+
 function! NumberToggle()
     if(&relativenumber == 1)
-        set number
+        set norelativenumber
     else
         set relativenumber
     endif
