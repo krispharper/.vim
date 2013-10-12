@@ -58,6 +58,9 @@ syn match htmlTagName contained "\<\(b\|i\|u\|h[1-6]\|em\|strong\|head\|body\|ti
 syn keyword htmlTagName contained abbr acronym bdo button col label
 syn keyword htmlTagName contained colgroup del fieldset iframe ins legend
 syn keyword htmlTagName contained object optgroup q s tbody tfoot thead
+"
+" new html 5.0 tags
+syn keyword htmlTagName contained nav header footer small canvas video
 
 " legal arg names
 syn keyword htmlArg contained action

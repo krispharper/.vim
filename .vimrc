@@ -56,7 +56,7 @@ endfunc
 nnoremap <C-n> :call NumberToggle()<CR>
 
 "Colors
-colorscheme default
+colorscheme zenburn
 highlight SpellBad term=Reverse ctermbg=Red ctermfg=White
 
 "Allow XML and HTML tag matching
