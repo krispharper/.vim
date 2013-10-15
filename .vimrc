@@ -1,22 +1,8 @@
-"Turn on filetype settings
-filetype on
-filetype plugin on
-syntax on
+"Pathogen setup
+execute pathogen#infect()
 
-"Show partial commands
-set showcmd
-
-"Show the cursor position
-set ruler
-
-"Do incremental searches
-set incsearch
-
-"Display most of a long line at the end of a screen
-set display+=lastline
-
-"Always show the status line
-set laststatus=2
+"Change leader
+let mapleader = ","
 
 "Turn off beeping
 set noeb vb t_vb=
@@ -27,19 +13,19 @@ set hidden
 "Indent settings
 set tabstop=4
 set shiftwidth=4
-set expandtab
-set autoindent
 set softtabstop=4
+set expandtab
+
+"Filetype specific settings
+autocmd FileType html setlocal ts=2 sts=2 sw=2
+autocmd FileType xml setlocal ts=2 sts=2 sw=2
+autocmd FileType ruby setlocal ts=2 sts=2 sw=2
+autocmd FileType eruby setlocal ts=2 sts=2 sw=2
+autocmd FileType sql setlocal noet
 
 "Set casing options
 set ignorecase
 set smartcase
-
-"Allow use of backspace key for deletion
-set backspace=indent,eol,start
-
-"Change leader
-let mapleader = ","
 
 "Relative numbering
 set number
@@ -57,15 +43,12 @@ nnoremap <C-n> :call NumberToggle()<CR>
 
 "Colors
 colorscheme zenburn
-highlight SpellBad term=Reverse ctermbg=Red ctermfg=White
 
-"Allow XML and HTML tag matching
-runtime macros/matchit.vim
+"Set up powerline
+set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 
 "Set gvim start size and font
 if has("gui_running")
-    "au GUIEnter * simalt ~x
-
     if has("win32")
         set guifont=Source_Code_Pro:h9:cANSI
     else
@@ -77,8 +60,6 @@ if has("gui_running")
     "Remove menu bar and toolbar
     set guioptions-=m
     set guioptions-=T
-
-    colorscheme zenburn
 endif
 
 "Windows specific settings
@@ -106,8 +87,12 @@ au BufWinEnter * silent! loadview
 
 "NERDTree settings
 let g:NERDTreeWinPos = "right"
-nnoremap <C-\> :NERDTree<CR>
+nnoremap <leader>. :NERDTree<CR>
 let NERDTreeIgnore = ['\.pyc$']
+autocmd vimenter * if !argc() | NERDTree | endif
+
+"Change CtrlP behavior
+let g:ctrlp_cmd = 'CtrlPMixed'
 
 "Buffer switching
 :nnoremap <C-b> :buffers<CR>:buffer<Space>
@@ -115,26 +100,9 @@ let NERDTreeIgnore = ['\.pyc$']
 "Open all buffers in tabs
 map <leader>bt :tab sball<CR>
 
-"Easier navigation
-"Test if we're on OS X or not because it reads arrow keys differently
-if has("unix")
-    let s:uname = system("uname")
-
-    if s:uname == "Darwin\n"
-        nnoremap ^[[5B <C-e>
-        nnoremap ^[[5A <C-y>
-        nnoremap [5D :tabprevious<CR>
-        nnoremap [5C :tabnext<CR>
-    endif
-endif
-
-nnoremap <C-Down> <C-e>
-nnoremap <C-Up> <C-y>
-map <C-Left> :tabp<CR>
-map <C-Right> :tabn<CR>
+"Tab navigation
 map <C-H> :tabp<CR>
 map <C-L> :tabn<CR>
-
 map <C-T> :tabnew %<CR>
 
 "Fix weird inconsistency with Y
