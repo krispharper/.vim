@@ -52,7 +52,7 @@ if has("gui_running")
     if has("win32")
         set guifont=Source_Code_Pro:h9:cANSI
     else
-        set guifont=Source\ Code\ Pro\ Medium\ 9
+        set guifont=Sauce\ Code\ Powerline\ Light:h11
     endif
 
     set clipboard=unnamed
@@ -90,6 +90,8 @@ let g:NERDTreeWinPos = "right"
 nnoremap <leader>. :NERDTree<CR>
 let NERDTreeIgnore = ['\.pyc$']
 autocmd vimenter * if !argc() | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 
 "Change CtrlP behavior
 let g:ctrlp_cmd = 'CtrlPMixed'
