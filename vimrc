@@ -1,5 +1,9 @@
 "Pathogen setup
-execute pathogen#infect()
+if has("win32")
+    execute pathogen#infect('~/vimfiles/bundle/{}')
+else
+    execute pathogen#infect()
+endif
 
 "Change leader
 let mapleader = ","
