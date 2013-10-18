@@ -49,12 +49,18 @@ nnoremap <C-n> :call NumberToggle()<CR>
 colorscheme zenburn
 
 "Set up powerline
-set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
+if has("win32")
+    if has("gui_running")
+        set rtp+=C:\Program\ Files\ (x86)\Python\ 2.7\Lib\site-packages\powerline\bindings\vim
+    endif
+else
+    set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
+endif
 
-"Set gvim start size and font
+"Set gvim settings
 if has("gui_running")
     if has("win32")
-        set guifont=Source_Code_Pro:h9:cANSI
+        set guifont=Sauce_Code_Powerline:h9:cANSI
     else
         set guifont=Sauce\ Code\ Powerline\ Light:h11
     endif
@@ -93,7 +99,7 @@ au BufWinEnter * silent! loadview
 let g:NERDTreeWinPos = "right"
 nnoremap <leader>. :NERDTree<CR>
 let NERDTreeIgnore = ['\.pyc$']
-autocmd vimenter * if !argc() | NERDTree | endif
+"autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 
