@@ -63,7 +63,11 @@ if has("gui_running")
     if has("win32")
         set guifont=Sauce_Code_Powerline:h9:cANSI
     else
-        set guifont=Sauce\ Code\ Powerline\ Light:h11
+        if system("uname") == "Darwin\n"
+            set guifont=Sauce\ Code\ Powerline\ Light:h11
+        else
+            set guifont=Source\ Code\ Pro\ for\ Powerline\ Regular\ 10
+        endif
     endif
 
     set clipboard=unnamed
