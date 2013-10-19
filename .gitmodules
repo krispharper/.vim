@@ -28,3 +28,6 @@
 [submodule "bundle/vim-repeat"]
 	path = bundle/vim-repeat
 	url = ssh://git@ssh.github.com:443/tpope/vim-repeat.git
+[submodule "bundle/vim-colors-solarized"]
+	path = bundle/vim-colors-solarized
+	url = ssh://git@ssh.github.com:443/altercation/vim-colors-solarized.git
