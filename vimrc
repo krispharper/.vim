@@ -46,7 +46,8 @@ endfunc
 nnoremap <C-n> :call NumberToggle()<CR>
 
 "Colors
-colorscheme zenburn
+set background=dark
+colorscheme solarized
 
 "Set up powerline
 if has("win32")
