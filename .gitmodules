@@ -43,3 +43,24 @@
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = git@github.com:ervandew/supertab.git
+[submodule "bundle/vim-extradite"]
+	path = bundle/vim-extradite
+	url = git@github.com:int3/vim-extradite.git
+[submodule "bundle/jellybeans"]
+	path = bundle/jellybeans
+	url = git@github.com:nanotech/jellybeans.vim.git
+[submodule "bundle/molokai"]
+	path = bundle/molokai
+	url = git@github.com:tomasr/molokai.git
+[submodule "bundle/BufClose"]
+	path = bundle/BufClose
+	url = git@github.com:vim-scripts/BufClose.vim.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = git@github.com:scrooloose/syntastic.git
+[submodule "bundle/vim-ruby"]
+	path = bundle/vim-ruby
+	url = git@github.com:vim-ruby/vim-ruby.git
+[submodule "bundle/vim-rails"]
+	path = bundle/vim-rails
+	url = git@github.com:tpope/vim-rails.git
