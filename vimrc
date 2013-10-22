@@ -21,11 +21,16 @@ set softtabstop=4
 set expandtab
 
 "Filetype specific settings
-autocmd FileType html setlocal ts=2 sts=2 sw=2
-autocmd FileType xml setlocal ts=2 sts=2 sw=2
-autocmd FileType ruby setlocal ts=2 sts=2 sw=2
-autocmd FileType eruby setlocal ts=2 sts=2 sw=2
+autocmd FileType html,xml setlocal ts=2 sts=2 sw=2
+autocmd FileType ruby,eruby setlocal ts=2 sts=2 sw=2 ofu=rubycomplete#Complete
 autocmd FileType sql setlocal noet
+
+"Set autocomplete for rails
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+"autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+"autocmd FileType ruby,eruby let g:rubycomplete_include_object = 1
+"autocmd FileType ruby,eruby let g:rubycomplete_include_objectspace = 1
 
 "Set casing options
 set ignorecase
@@ -106,6 +111,11 @@ let NERDTreeIgnore = ['\.pyc$']
 "autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+"SuperTab settings
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
 
 "Change CtrlP behavior
 let g:ctrlp_cmd = 'CtrlPMixed'
