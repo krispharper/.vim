@@ -33,34 +33,34 @@
 	url = ssh://git@ssh.github.com:443/altercation/vim-colors-solarized.git
 [submodule "bundle/vim-fugitive"]
 	path = bundle/vim-fugitive
-	url = git@github.com:tpope/vim-fugitive.git
+	url = ssh://git@ssh.github.com:443/tpope/vim-fugitive.git
 [submodule "bundle/vim-unimpaired"]
 	path = bundle/vim-unimpaired
-	url = git://github.com/tpope/vim-unimpaired.git
+	url = ssh://git@ssh.github.com:443/tpope/vim-unimpaired.git
 [submodule "bundle/supertab"]
 	path = bundle/supertab
-	url = git@github.com:ervandew/supertab.git
+	url = ssh://git@ssh.github.com:443/ervandew/supertab.git
 [submodule "bundle/vim-extradite"]
 	path = bundle/vim-extradite
-	url = git@github.com:int3/vim-extradite.git
+	url = ssh://git@ssh.github.com:443/int3/vim-extradite.git
 [submodule "bundle/jellybeans"]
 	path = bundle/jellybeans
-	url = git@github.com:nanotech/jellybeans.vim.git
+	url = ssh://git@ssh.github.com:443/nanotech/jellybeans.vim.git
 [submodule "bundle/molokai"]
 	path = bundle/molokai
-	url = git@github.com:tomasr/molokai.git
+	url = ssh://git@ssh.github.com:443/tomasr/molokai.git
 [submodule "bundle/BufClose"]
 	path = bundle/BufClose
-	url = git@github.com:vim-scripts/BufClose.vim.git
+	url = ssh://git@ssh.github.com:443/vim-scripts/BufClose.vim.git
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
-	url = git@github.com:scrooloose/syntastic.git
+	url = ssh://git@ssh.github.com:443/scrooloose/syntastic.git
 [submodule "bundle/vim-ruby"]
 	path = bundle/vim-ruby
-	url = git@github.com:vim-ruby/vim-ruby.git
+	url = ssh://git@ssh.github.com:443/vim-ruby/vim-ruby.git
 [submodule "bundle/vim-rails"]
 	path = bundle/vim-rails
-	url = git@github.com:tpope/vim-rails.git
+	url = ssh://git@ssh.github.com:443/tpope/vim-rails.git
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
 	url = ssh://git@ssh.github.com:443/scrooloose/nerdcommenter.git
