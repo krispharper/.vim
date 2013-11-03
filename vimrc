@@ -83,9 +83,7 @@ endif
 
 "Windows specific settings
 if has("win32")
-    "Set the shell to use powershell instead of cmd
-    set shell=powershell.exe
-    set shellcmdflag=-command
+    "set shellcmdflag=-command
 
     if exists("&novsvim_useeditorindent")
         set novsvim_useeditorindent
