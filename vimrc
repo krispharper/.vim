@@ -113,6 +113,17 @@ let g:SuperTabClosePreviewOnPopupClose = 1
 "Change CtrlP behavior
 let g:ctrlp_cmd = 'CtrlPMixed'
 
+"Dragvisuals setup
+runtime bundle/dragvisuals.vim/plugin/dragvisuals.vim
+vmap <expr> <left> DVB_Drag('left')
+vmap <expr> <right> DVB_Drag('right')
+vmap <expr> <down> DVB_Drag('down')
+vmap <expr> <up> DVB_Drag('up')
+vmap <expr> D DVB_Duplicate()
+
+" Remove any introduced trailing whitespace after moving...
+let g:DVB_TrimWS = 1
+
 "Buffer switching
 :nnoremap <C-b> :buffers<CR>:buffer<Space>
 

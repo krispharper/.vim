@@ -67,3 +67,6 @@
 [submodule "bundle/vim-indexed-search"]
 	path = bundle/vim-indexed-search
 	url = ssh://git@ssh.github.com:443/henrik/vim-indexed-search.git
+[submodule "bundle/dragvisuals.vim"]
+	path = bundle/dragvisuals.vim
+	url = ssh://git@ssh.github.com:443/gavinbeatty/dragvisuals.vim.git
