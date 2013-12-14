@@ -64,7 +64,7 @@ if has("gui_running")
         if system("uname") == "Darwin\n"
             set guifont=Sauce\ Code\ Powerline\ Light:h11
         else
-            set guifont=Source\ Code\ Pro\ for\ Powerline\ Regular\ 10
+            set guifont=Source\ Code\ Pro\ for\ Powerline\ Regular\ 9
         endif
     endif
 
