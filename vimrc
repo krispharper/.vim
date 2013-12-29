@@ -109,12 +109,7 @@ let NERDTreeIgnore = ['\.pyc$']
 "autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-"SuperTab settings
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
-let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
-let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
-let g:SuperTabClosePreviewOnPopupClose = 1
+let b:SuperTabDisabled = 1
 
 "Change CtrlP behavior
 let g:ctrlp_cmd = 'CtrlPMixed'
