@@ -20,7 +20,7 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-"Filetype specific settings
+"FileType specific settings
 autocmd FileType html,xml setlocal ts=2 sts=2 sw=2
 autocmd FileType ruby,eruby setlocal ts=2 sts=2 sw=2 ofu=rubycomplete#Complete
 autocmd FileType sql setlocal noet
@@ -31,6 +31,9 @@ autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 "autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 "autocmd FileType ruby,eruby let g:rubycomplete_include_object = 1
 "autocmd FileType ruby,eruby let g:rubycomplete_include_objectspace = 1
+
+"Default TeX files to be LaTeX files
+let g:tex_flavor = "latex"
 
 "Set casing options
 set ignorecase
