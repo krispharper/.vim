@@ -73,3 +73,6 @@
 [submodule "bundle/YouCompleteMe"]
 	path = bundle/YouCompleteMe
 	url = ssh://git@ssh.github.com:443/Valloric/YouCompleteMe.git
+[submodule "bundle/LaTeX-Box"]
+	path = bundle/LaTeX-Box
+	url = ssh://git@ssh.github.com:443/LaTeX-Box-Team/LaTeX-Box.git
