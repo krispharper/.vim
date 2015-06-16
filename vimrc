@@ -1,5 +1,7 @@
 "Pathogen setup
 if has("win32")
+    "Disable YouCompleteMe
+    let g:loaded_youcompleteme = 1
     execute pathogen#infect('~/vimfiles/bundle/{}')
 else
     execute pathogen#infect()
@@ -55,7 +57,9 @@ nnoremap <C-n> :call NumberToggle()<CR>
 
 "Colors
 colorscheme zenburn
-let g:zenburn_transparent=1
+if !has("win32")
+    let g:zenburn_transparent=1
+endif
 
 "Set up powerline
 if has("win32")
