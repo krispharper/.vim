@@ -64,7 +64,7 @@ endif
 "Set up powerline
 if has("win32")
     if has("gui_running")
-        set rtp+=C:\Program\ Files\ (x86)\Python\ 2.7\Lib\site-packages\powerline\bindings\vim
+        set rtp+=C:\Program\ Files\ (x86)\Python27\Lib\site-packages\powerline\bindings\vim
     endif
 else
     set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
