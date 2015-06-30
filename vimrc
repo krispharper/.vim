@@ -82,7 +82,7 @@ if has("gui_running")
         endif
     endif
 
-    set clipboard=unnamedplus
+    set clipboard^=unnamed,unnamedplus
 
     "Remove menu bar and toolbar
     set guioptions-=m
