@@ -30,9 +30,6 @@ autocmd FileType sql setlocal noet
 "Set autocomplete for rails
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-"autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-"autocmd FileType ruby,eruby let g:rubycomplete_include_object = 1
-"autocmd FileType ruby,eruby let g:rubycomplete_include_objectspace = 1
 
 "Default TeX files to be LaTeX files
 let g:tex_flavor = "latex"
@@ -87,15 +84,6 @@ if has("gui_running")
     "Remove menu bar and toolbar
     set guioptions-=m
     set guioptions-=T
-endif
-
-"Windows specific settings
-if has("win32")
-    "set shellcmdflag=-command
-
-    if exists("&novsvim_useeditorindent")
-        set novsvim_useeditorindent
-    endif
 endif
 
 "Fold settings
