@@ -98,6 +98,9 @@ nnoremap zO zR
 au BufWinLeave * silent! mkview
 au BufWinEnter * silent! loadview
 
+"Ignore some directories when searching files
+set wildignore+=**/node_modules/**,**/bin/**
+
 "NERDTree settings
 let g:NERDTreeWinPos = "right"
 nnoremap <leader>. :NERDTree<CR>
@@ -131,6 +134,8 @@ map <leader>bt :tab sball<CR>
 map <C-H> :tabp<CR>
 map <C-L> :tabn<CR>
 map <C-T> :tabnew %<CR>
+
+map <leader>w :cw<CR>:wincmd J<CR>
 
 "Fix weird inconsistency with Y
 map Y y$
