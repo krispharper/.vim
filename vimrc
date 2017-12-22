@@ -1,11 +1,19 @@
-"Pathogen setup
-if has("win32")
-    "Disable YouCompleteMe
-    let g:loaded_youcompleteme = 1
-    execute pathogen#infect('~/vimfiles/bundle/{}')
-else
-    execute pathogen#infect()
-endif
+"vim-plug setup
+call plug#begin()
+Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': 'tex' }
+Plug 'PProvost/vim-ps1', { 'for': 'ps1' }
+Plug 'elubow/cql-vim', { 'for': 'cql' }
+Plug 'krispharper/zenburn'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'stephpy/vim-yaml'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/BufClose.vim'
+Plug 'vim-syntastic/syntastic'
+call plug#end()
 
 "Change leader
 let mapleader = ","
