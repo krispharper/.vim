@@ -79,7 +79,7 @@ endif
 "Set gvim settings
 if has("gui_running")
     if has("win32")
-        set guifont=Sauce_Code_Powerline:h9:cANSI
+        set guifont=Source_Code_Pro_for_Powerline:h9:cANSI
     else
         if system("uname") == "Darwin\n"
             set guifont=Sauce\ Code\ Powerline\ Light:h11
