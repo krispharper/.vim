@@ -12,6 +12,8 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'Valloric/YouCompleteMe'
+Plug 'vim-python/python-syntax'
 Plug 'vim-scripts/BufClose.vim'
 Plug 'vim-syntastic/syntastic'
 call plug#end()
@@ -35,6 +37,10 @@ set expandtab
 autocmd FileType html,xml setlocal ts=2 sts=2 sw=2
 autocmd FileType ruby,eruby setlocal ts=2 sts=2 sw=2 ofu=rubycomplete#Complete
 autocmd FileType sql setlocal noet
+
+let g:python_highlight_all = 1
+let g:python_highlight_indent_errors = 0
+let g:python_highlight_space_errors = 0
 
 "Set autocomplete for rails
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
@@ -60,6 +66,9 @@ function! NumberToggle()
 endfunc
 
 nnoremap <C-n> :call NumberToggle()<CR>
+
+"Disable syntastic when saving certain filetypes
+let g:syntastic_mode_map = { "mode": "active", "passive_filetypes": ["python"] }
 
 "Colors
 colorscheme zenburn
@@ -117,21 +126,8 @@ let NERDTreeIgnore = ['\.pyc$']
 "autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-let b:SuperTabDisabled = 1
-
 "Change CtrlP behavior
 let g:ctrlp_cmd = 'CtrlPMixed'
-
-"Dragvisuals setup
-runtime bundle/dragvisuals.vim/plugin/dragvisuals.vim
-vmap <expr> <left> DVB_Drag('left')
-vmap <expr> <right> DVB_Drag('right')
-vmap <expr> <down> DVB_Drag('down')
-vmap <expr> <up> DVB_Drag('up')
-vmap <expr> D DVB_Duplicate()
-
-" Remove any introduced trailing whitespace after moving...
-let g:DVB_TrimWS = 1
 
 "Buffer switching
 :nnoremap <C-b> :buffers<CR>:buffer<Space>
