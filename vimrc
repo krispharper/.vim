@@ -142,6 +142,9 @@ map <C-T> :tabnew %<CR>
 
 map <leader>w :cw<CR>:wincmd J<CR>
 
+"Format JSON
+nmap =j :%!python -m json.tool<CR>
+
 "Fix weird inconsistency with Y
 map Y y$
 
