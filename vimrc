@@ -3,6 +3,9 @@ call plug#begin()
 Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': 'tex' }
 Plug 'PProvost/vim-ps1', { 'for': 'ps1' }
 Plug 'elubow/cql-vim', { 'for': 'cql' }
+Plug 'embear/vim-localvimrc'
+Plug 'junegunn/fzf', { 'dir': '~/Development/fzf' }
+Plug 'junegunn/fzf.vim'
 Plug 'krispharper/zenburn'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -15,7 +18,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'Valloric/YouCompleteMe'
 Plug 'vim-python/python-syntax'
 Plug 'vim-scripts/BufClose.vim'
-Plug 'vim-syntastic/syntastic'
+Plug 'w0rp/ale'
 call plug#end()
 
 "Change leader
@@ -67,9 +70,6 @@ endfunc
 
 nnoremap <C-n> :call NumberToggle()<CR>
 
-"Disable syntastic when saving certain filetypes
-let g:syntastic_mode_map = { "mode": "active", "passive_filetypes": ["python"] }
-
 "Colors
 colorscheme zenburn
 if !has("win32")
@@ -117,7 +117,7 @@ au BufWinLeave * silent! mkview
 au BufWinEnter * silent! loadview
 
 "Ignore some directories when searching files
-set wildignore+=**/node_modules/**,**/bin/**
+set wildignore+=**/node_modules/**,**/bin/**,**/build/**,**/app/**
 
 "NERDTree settings
 let g:NERDTreeWinPos = "right"
@@ -128,6 +128,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 "Change CtrlP behavior
 let g:ctrlp_cmd = 'CtrlPMixed'
+
+"Load local vimrcs without asking
+let g:localvimrc_ask=0
 
 "Buffer switching
 :nnoremap <C-b> :buffers<CR>:buffer<Space>
