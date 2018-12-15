@@ -82,7 +82,7 @@ if has("win32")
         set rtp+=C:\Program\ Files\ (x86)\Python27\Lib\site-packages\powerline\bindings\vim
     endif
 else
-    set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
+    set rtp+=/home/kris/.local/lib/python3.6/site-packages/powerline/bindings/vim
 endif
 
 "Set gvim settings
@@ -93,7 +93,7 @@ if has("gui_running")
         if system("uname") == "Darwin\n"
             set guifont=Sauce\ Code\ Powerline\ Light:h11
         else
-            set guifont=Source\ Code\ Pro\ for\ Powerline\ Regular\ 8
+            set guifont=Source\ Code\ Pro\ 8
         endif
     endif
 
