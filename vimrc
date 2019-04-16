@@ -2,11 +2,15 @@
 call plug#begin()
 Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': 'tex' }
 Plug 'PProvost/vim-ps1', { 'for': 'ps1' }
+Plug 'davidhalter/jedi-vim'
 Plug 'elubow/cql-vim', { 'for': 'cql' }
+Plug 'elzr/vim-json'
 Plug 'embear/vim-localvimrc'
 Plug 'junegunn/fzf', { 'dir': '~/Development/fzf' }
 Plug 'junegunn/fzf.vim'
+Plug 'krispharper/vim-conceal'
 Plug 'krispharper/zenburn'
+Plug 'leafgarland/typescript-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'stephpy/vim-yaml'
@@ -41,13 +45,21 @@ autocmd FileType html,xml setlocal ts=2 sts=2 sw=2
 autocmd FileType ruby,eruby setlocal ts=2 sts=2 sw=2 ofu=rubycomplete#Complete
 autocmd FileType sql setlocal noet
 
+"Turn on conceal
+set conceallevel=1
+
 let g:python_highlight_all = 1
 let g:python_highlight_indent_errors = 0
 let g:python_highlight_space_errors = 0
 
-"Set autocomplete for rails
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+"Jedi settings
+let g:jedi#use_tabs_not_buffers = 1  " use buffers instead of tabs
+let g:jedi#show_call_signatures = "1"
+let g:jedi#goto_assignments_command = "<leader>d"
+let g:jedi#goto_definitions_command = "<leader>dd"
+let g:jedi#documentation_command = "<leader>k"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#rename_command = "<leader>r"
 
 "Default TeX files to be LaTeX files
 let g:tex_flavor = "latex"
@@ -126,8 +138,9 @@ let NERDTreeIgnore = ['\.pyc$']
 "autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-"Change CtrlP behavior
-let g:ctrlp_cmd = 'CtrlPMixed'
+"Add fzf mappings
+map <leader>f :FZF<CR>
+map <leader>a :Ag<CR>
 
 "Load local vimrcs without asking
 let g:localvimrc_ask=0
