@@ -82,6 +82,9 @@ endfunc
 
 nnoremap <C-n> :call NumberToggle()<CR>
 
+"Undo on closed files
+set undofile
+
 "Colors
 colorscheme zenburn
 if !has("win32")

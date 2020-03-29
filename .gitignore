@@ -1,4 +1,5 @@
 .netrwhist
 view/*
 *.swp
+*.un~
 plugged/*
