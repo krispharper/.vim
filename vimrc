@@ -25,6 +25,8 @@ Plug 'vim-scripts/BufClose.vim'
 Plug 'w0rp/ale'
 call plug#end()
 
+source ~/.vim/vimrc.local
+
 "Change leader
 let mapleader = ","
 
@@ -91,25 +93,12 @@ if !has("win32")
     let g:zenburn_transparent=1
 endif
 
-"Set up powerline
-if has("win32")
-    if has("gui_running")
-        set rtp+=C:\Program\ Files\ (x86)\Python27\Lib\site-packages\powerline\bindings\vim
-    endif
-else
-    set rtp+=/home/kris/.local/lib/python3.6/site-packages/powerline/bindings/vim
-endif
-
 "Set gvim settings
 if has("gui_running")
-    if has("win32")
-        set guifont=Source_Code_Pro_for_Powerline:h9:cANSI
+    if system("uname") == "Darwin\n"
+        set guifont=Sauce\ Code\ Powerline\ Light:h11
     else
-        if system("uname") == "Darwin\n"
-            set guifont=Sauce\ Code\ Powerline\ Light:h11
-        else
-            set guifont=Source\ Code\ Pro\ 8
-        endif
+        set guifont=Source\ Code\ Pro\ 8
     endif
 
     set clipboard^=unnamed,unnamedplus

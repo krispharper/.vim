@@ -3,3 +3,4 @@ view/*
 *.swp
 *.un~
 plugged/*
+vimrc.local
