@@ -38,6 +38,9 @@ set noeb vb t_vb=
 "Allow edited hidden buffers
 set hidden
 
+"Enable mouse
+set mouse=a
+
 "Indent settings
 set tabstop=4
 set shiftwidth=4
@@ -98,7 +101,7 @@ endif
 "Set gvim settings
 if has("gui_running")
     if system("uname") == "Darwin\n"
-        set guifont=Sauce\ Code\ Powerline\ Light:h11
+        set guifont=SourceCodeProForPowerline-Regular:h12
     else
         set guifont=Source\ Code\ Pro\ 8
     endif
@@ -108,6 +111,8 @@ if has("gui_running")
     "Remove menu bar and toolbar
     set guioptions-=m
     set guioptions-=T
+else
+    set clipboard^=unnamed
 endif
 
 "Fold settings
