@@ -3,6 +3,8 @@ call plug#begin()
 Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': 'tex' }
 Plug 'PProvost/vim-ps1', { 'for': 'ps1' }
 Plug 'davidhalter/jedi-vim'
+Plug 'edkolev/promptline.vim'
+Plug 'edkolev/tmuxline.vim'
 Plug 'elubow/cql-vim', { 'for': 'cql' }
 Plug 'elzr/vim-json'
 Plug 'embear/vim-localvimrc'
@@ -22,6 +24,8 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'Valloric/YouCompleteMe'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-python/python-syntax'
 Plug 'vim-scripts/BufClose.vim'
 Plug 'w0rp/ale'
@@ -115,6 +119,21 @@ else
     set clipboard^=unnamed
 endif
 
+" Set Airline settings
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tmuxline#enabled = 0
+
+
+" Set Prompline settings
+let g:promptline_preset = {
+    \'a' : [ promptline#slices#host() ],
+    \'b' : [ promptline#slices#user() ],
+    \'c' : [ promptline#slices#cwd() ],
+    \'y' : [ promptline#slices#git_status(), promptline#slices#vcs_branch() ],
+    \'z' : [ promptline#slices#conda_env() ],
+    \'warn' : [ promptline#slices#last_exit_code() ]}
+
 "Fold settings
 set foldmethod=indent
 set foldnestmax=2
@@ -145,7 +164,7 @@ map <leader>a :Ag<CR>
 let g:localvimrc_ask=0
 
 "Buffer switching
-:nnoremap <C-b> :buffers<CR>:buffer<Space>
+:nnoremap <leader>b :Buffers<CR>
 
 "Open all buffers in tabs
 map <leader>bt :tab sball<CR>
