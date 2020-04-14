@@ -130,8 +130,8 @@ let g:airline_skip_empty_sections = 1
 
 " Set Prompline settings
 let g:promptline_preset = {
-    \'a' : [ promptline#slices#host() ],
-    \'b' : [ promptline#slices#user() ],
+    \'a' : [ '$vim_mode' ],
+    \'b' : [ promptline#slices#host(), promptline#slices#user() ],
     \'c' : [ promptline#slices#cwd() ],
     \'y' : [ promptline#slices#git_status(), promptline#slices#vcs_branch() ],
     \'z' : [ promptline#slices#conda_env() ],
