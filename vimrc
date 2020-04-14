@@ -18,6 +18,7 @@ Plug 'mbbill/undotree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'stephpy/vim-yaml'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-speeddating'
@@ -123,6 +124,7 @@ endif
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tmuxline#enabled = 0
+let g:airline_skip_empty_sections = 1
 
 
 " Set Prompline settings
