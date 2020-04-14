@@ -96,6 +96,7 @@ nnoremap <C-n> :call NumberToggle()<CR>
 
 "Undo on closed files
 set undofile
+set undodir=~/.vim/undo
 
 "Colors
 colorscheme zenburn
