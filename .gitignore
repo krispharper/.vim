@@ -4,4 +4,4 @@ view/*
 *.un~
 plugged/*
 vimrc.local
-undo
+.undo

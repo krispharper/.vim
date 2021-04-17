@@ -30,6 +30,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-python/python-syntax'
 Plug 'vim-scripts/BufClose.vim'
 Plug 'w0rp/ale'
+Plug 'wfxr/minimap.vim'
+Plug 'whiteinge/diffconflicts'
 call plug#end()
 
 source ~/.vim/vimrc.local
@@ -96,7 +98,10 @@ nnoremap <C-n> :call NumberToggle()<CR>
 
 "Undo on closed files
 set undofile
-set undodir=~/.vim/undo
+set undodir=~/.vim/.undo//
+
+"Consolidate swp files 
+set directory=~/.vim/.swp//
 
 "Colors
 colorscheme zenburn
@@ -121,14 +126,15 @@ else
     set clipboard^=unnamed
 endif
 
-" Set Airline settings
+"Set Airline settings
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tmuxline#enabled = 0
 let g:airline_skip_empty_sections = 1
+let g:airline#extensions#tabline#show_close_button = 1
 
 
-" Set Prompline settings
+"Set Prompline settings
 let g:promptline_preset = {
     \'a' : [ '$vim_mode' ],
     \'b' : [ promptline#slices#host(), promptline#slices#user() ],
@@ -144,10 +150,6 @@ set foldlevel=1000
 nnoremap <space> za
 nnoremap zC zM
 nnoremap zO zR
-
-"Save fold settings on exit and reload on start
-au BufWinLeave * silent! mkview
-au BufWinEnter * silent! loadview
 
 "Ignore some directories when searching files
 set wildignore+=**/node_modules/**,**/bin/**,**/build/**,**/app/**
@@ -172,9 +174,9 @@ let g:localvimrc_ask=0
 "Open all buffers in tabs
 map <leader>bt :tab sball<CR>
 
-"Tab navigation
-map <C-H> :tabp<CR>
-map <C-L> :tabn<CR>
+"Buffer navigation
+map <C-H> :bprevious<CR>
+map <C-L> :bnext<CR>
 map <C-T> :tabnew %<CR>
 
 map <leader>w :cw<CR>:wincmd J<CR>
