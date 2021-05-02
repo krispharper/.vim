@@ -57,7 +57,12 @@ set expandtab
 "FileType specific settings
 autocmd FileType html,xml setlocal ts=2 sts=2 sw=2
 autocmd FileType ruby,eruby setlocal ts=2 sts=2 sw=2 ofu=rubycomplete#Complete
-autocmd FileType sql setlocal noet
+autocmd FileType tf setlocal ts=2 sts=2 sw=2
+
+" Spell-check Markdown files and Git Commit Messages
+autocmd FileType markdown setlocal spell
+autocmd FileType gitcommit setlocal spell
+autocmd FileType pullrequest setlocal spell
 
 "Turn on conceal
 set conceallevel=1
