@@ -145,7 +145,7 @@ let g:promptline_preset = {
     \'b' : [ promptline#slices#host(), promptline#slices#user() ],
     \'c' : [ promptline#slices#cwd() ],
     \'y' : [ promptline#slices#git_status(), promptline#slices#vcs_branch() ],
-    \'z' : [ promptline#slices#conda_env() ],
+    \'z' : [ promptline#slices#conda_env(), '$(echo $VIRTUAL_ENV | cut -f 8 -d"/" | cut -f 1 -d"-")'],
     \'warn' : [ promptline#slices#last_exit_code() ]}
 
 "Fold settings
