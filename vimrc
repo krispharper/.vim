@@ -2,6 +2,7 @@
 call plug#begin()
 Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': 'tex' }
 Plug 'PProvost/vim-ps1', { 'for': 'ps1' }
+Plug 'Valloric/YouCompleteMe'
 Plug 'davidhalter/jedi-vim'
 Plug 'edkolev/promptline.vim'
 Plug 'edkolev/tmuxline.vim'
@@ -17,6 +18,7 @@ Plug 'machakann/vim-swap'
 Plug 'mbbill/undotree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
 Plug 'stephpy/vim-yaml'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -24,7 +26,6 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'Valloric/YouCompleteMe'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-python/python-syntax'
